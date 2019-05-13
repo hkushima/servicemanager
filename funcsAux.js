@@ -1,6 +1,6 @@
 /**
 
-	Função para criar interfaces para servidor
+	Função para criar interfaces para servidor com base nas interfaces do pool
 
 */
 
@@ -37,7 +37,7 @@ function criaInterfaceServer(server, pool, change){
 
 /**
 
-	Função para criar interfaces para hosts
+	Função para criar interfaces para hosts com base nas interfaces do pool
 
 */
 
@@ -68,7 +68,9 @@ function criaInterfaceHost(ci, pool, change, server){
 					system.library.UOLCSFuncoes.criaRelac(interf,interfServer,"interface","interface-f","producao","producao","logico","depender",change)
 					
 					var ifalias = searchListaCIRelac(null,iflogica,"interface-alias", "interface-logica")
-					
+					ifalias = system.functions.UOLCSFuncoes.removeDuplicateEmptyElement(ifalias)
+					var tam = system.functions.lng(ifalias);
+					for (var i=0;i<tam;i++) system.library.UOLCSFuncoes.criaRelac(interf,interfServer,"interface","interface-f","producao","producao","logico","depender",change)
 
 				}
 				
